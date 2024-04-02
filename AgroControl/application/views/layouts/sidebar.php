@@ -24,6 +24,17 @@
               <li class="nav-item">
                 <a href="<?= base_url('index.php/admin/Inicio/mostrarAgricultores') ?>" class="nav-link">
                   <i class="nav-icon fa-solid fa-users-line"></i>
+<<<<<<< Updated upstream
+=======
+                  <p>
+                    Ver Usuarios
+                  </p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="<?= base_url('index.php/admin/Inicio/mostrarCultivos') ?>" class="nav-link">
+                  <i class="nav-icon fa-solid fa-pepper-hot"></i>
+>>>>>>> Stashed changes
                   <p>
                     Ver Usuarios
                   </p>

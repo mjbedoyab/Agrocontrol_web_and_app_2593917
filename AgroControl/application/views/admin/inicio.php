@@ -16,7 +16,7 @@
 							<!-- small card -->
 							<div class="small-box bg-info">
 								<div class="inner">
-									<h3><?php echo $cultivos ?></h3>
+									<h3></h3>
 									<h3>Cultivos</h3>
 								</div>
 								<div class="icon">
@@ -32,7 +32,7 @@
 							<!-- small card -->
 							<div class="small-box bg-success">
 								<div class="inner">
-									<h3><?php echo $tareas; ?></h3>
+									<h3></h3>
 									<h3>Tareas ingresadas</h3> 
 								</div>
 								<div class="icon">
@@ -48,7 +48,7 @@
 							<!-- small card -->
 							<div class="small-box bg-warning">
 								<div class="inner">
-									<h3 class="text-white"><?php echo $agricultores; ?></h3>
+									<h3 class="text-white"></h3>
 									<h3 class="text-white">Agricultores</h3> 
 								</div>
 								<div class="icon">
@@ -64,7 +64,7 @@
 							<!-- small card -->
 							<div class="small-box bg-danger">
 								<div class="inner">
-									<h3><?php echo $tareas_finalizadas; ?></h3>
+									<h3></h3>
 									<h3>Tareas finalizadas</h3> 
 								</div>
 								<div class="icon">
@@ -80,7 +80,7 @@
 							<!-- small card -->
 							<div class="small-box bg-primary">
 								<div class="inner">
-									<h3><?php echo $tareas_pendientes; ?></h3>
+									<h3></h3>
 									<h3> Tareas pendientes</h3>
 								</div>
 								<div class="icon">

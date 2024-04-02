@@ -82,6 +82,70 @@ class Inicio extends CI_Controller {
 	}
 
 
+	public function mostrarAgricultores(){
+		$url = 'http://localhost/APIenPHP-agricultura/agricultor/Obtener.php';
+
+        // Realizar la solicitud GET a la API
+        $response = $this->curl->simple_get($url);
+
+        // Procesar los datos recibidos (puede variar dependiendo de la estructura de los datos)
+        $respuesta = json_decode($response, true);
+
+        // Hacer algo con los datos, como pasarlos a la vista
+		$data['datos']=$respuesta;
+		$data['session'] = $this->session->userdata("session-mvc");
+        $this->load->view('admin/verUsuarios', $data );
+	}
+
+
+
+	// public function listado()
+	// {
+	// 	$vdata["personas"] = $this->PersonasModel->findAll();
+
+	// 	$this->load->view('verUsarios', $vdata);
+	// }
+
+	public function openCreateUser(){
+		
+		$data['session'] = $this->session->userdata("session-mvc");
+		$this->load->view('admin/crearUsuario', $data);
+		
+
+        
+
+		// if ($this->input->server("REQUEST_METHOD") == "POST") {
+		// 	$datas["cedula"] = $this->input->post("documento");
+		// 	$datas["nombres"] = $this->input->post("nombre");
+		// 	$datas["apellidos"] = $this->input->post("apellido");
+		// 	$datas["email"] = $this->input->post("correo");
+		// 	$datas["telefono"] = $this->input->post("telefono");
+		// 	$datas["direccion"] = $this->input->post("direccion");
+		// 	$datas["foto"] = $this->input->post("foto");
+
+		// 	$usuarios["cedula"]=$this->input->post("documento");
+		// 	$usuarios["email"]=$this->input->post("correo");
+		// 	$contraseña=$this->input->post("contrasenia");
+		// 	$usuarios["password"]=md5($contraseña);
+		// 	$usuarios["tipo"]=$this->input->post("shirts");
+		// 	$usuarios["estado"]=$this->input->post("estado");
+			
+
+		// 	$this->PersonasModel->insert($datas);
+		// 	$this->PersonasModel->insertUser($usuarios);
+		// }
+
+    
+	}
+
+	public function actualizarPersona($cedula){
+		$data['session'] = $this->session->userdata("session-mvc");	
+		$data['cedula'] = $cedula;	
+		$this->load->view('admin/actualizarUsuario', $data);
+	}
+
+
+
 	
 
 	public function InsertarTareas(){

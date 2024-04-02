@@ -11,7 +11,9 @@
         <div class="sidebar">
           <!-- Sidebar user panel (optional) -->
           <div class="user-panel mt-3 pb-3 mb-3 d-flex">
-           
+            <div class="image">
+							<img src="<?php echo base_url();?>/dist/img/user2-160x160.jpg" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
+            </div>
             <div class="info">
 						<a href="<?= base_url('index.php/admin/Inicio/mostrarperfil') ?>" class="d-block"><?= explode(" ", $session['nombre'])[0]?></a>
             </div>
@@ -24,8 +26,6 @@
               <li class="nav-item">
                 <a href="<?= base_url('index.php/admin/Inicio/mostrarAgricultores') ?>" class="nav-link">
                   <i class="nav-icon fa-solid fa-users-line"></i>
-<<<<<<< Updated upstream
-=======
                   <p>
                     Ver Usuarios
                   </p>
@@ -34,9 +34,8 @@
               <li class="nav-item">
                 <a href="<?= base_url('index.php/admin/Inicio/mostrarCultivos') ?>" class="nav-link">
                   <i class="nav-icon fa-solid fa-pepper-hot"></i>
->>>>>>> Stashed changes
                   <p>
-                    Ver Usuarios
+                    Ver cultivos
                   </p>
                 </a>
               </li>

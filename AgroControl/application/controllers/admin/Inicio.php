@@ -7,7 +7,7 @@ class Inicio extends CI_Controller {
 		parent::__construct();
 		$this->load->helper('form');
         $this->load->model('UsuariosModel');
-		
+		$this->load->model('Estadisticas_model');
 		$this->load->library('curl');
         $this->load->database();
 		$validacion = $this->session->has_userdata("session-mvc");
@@ -27,7 +27,20 @@ class Inicio extends CI_Controller {
 
 	public function index(){
 		// Obtener datos desde el modelo
-		
+		$estadisticas = $this->Estadisticas_model->getEstadisticas();
+		// Asignar datos a variables individuales
+		$cultivos = $estadisticas['cultivos'];
+		$agricultores = $estadisticas['agricultores'];
+		$tareas = $estadisticas['tareas'];
+		$tareas_finalizadas = $estadisticas['tareas_finalizadas'];
+		$tareas_pendientes = $estadisticas['tareas_pendientes'];
+
+		// Pasar variables a la vista
+		$data['cultivos'] = $cultivos;
+		$data['agricultores'] = $agricultores;
+		$data['tareas'] = $tareas;
+		$data['tareas_finalizadas'] = $tareas_finalizadas;
+		$data['tareas_pendientes'] = $tareas_pendientes;
 	    $data['session'] = $this->session->userdata("session-mvc");
 		// Cargar vista con los datos
 		
@@ -36,11 +49,37 @@ class Inicio extends CI_Controller {
 		
 	}
 
+	public function actualizarCultivo($id_cultivo){
+		$data['session'] = $this->session->userdata("session-mvc");	
+		$data['id_cultivo'] = $id_cultivo;
+		$this->load->view('admin/actualizarCultivo', $data);
+	}
+
+	public function mostrarCultivos(){
+		$url = 'http://localhost/APIenPHP-agricultura/cultivos/Obtener.php';
+
+        // Realizar la solicitud GET a la API
+        $response = $this->curl->simple_get($url);
+
+        // Procesar los datos recibidos (puede variar dependiendo de la estructura de los datos)
+        $respuesta = json_decode($response, true);
+
+        // Hacer algo con los datos, como pasarlos a la vista
+		$data['datos']=$respuesta;
+		$data['session'] = $this->session->userdata("session-mvc");
+        $this->load->view('admin/verCultivos', $data );
+	}
+
 	public function mostrarperfil(){
 		$data['session'] = $this->session->userdata("session-mvc");
 		$this->load->view('admin/perfil', $data);
 	}
 
+	public function crearCultivo(){
+		
+		$data['session'] = $this->session->userdata("session-mvc");
+		$this->load->view('admin/crearCultivo', $data);
+	}
 
 	public function mostrarAgricultores(){
 		$url = 'http://localhost/APIenPHP-agricultura/agricultor/Obtener.php';
@@ -98,74 +137,12 @@ class Inicio extends CI_Controller {
     
 	}
 
-<<<<<<< Updated upstream
-=======
-	public function mostrarAgricultores(){
-		$url = 'http://localhost/APIenPHP-agricultura/agricultor/Obtener.php';
-
-        // Realizar la solicitud GET a la API
-        $response = $this->curl->simple_get($url);
-
-        // Procesar los datos recibidos (puede variar dependiendo de la estructura de los datos)
-        $respuesta = json_decode($response, true);
-
-        // Hacer algo con los datos, como pasarlos a la vista
-		$data['datos']=$respuesta;
-		$data['session'] = $this->session->userdata("session-mvc");
-        $this->load->view('admin/verUsuarios', $data );
-	}
-
-
-
-	// public function listado()
-	// {
-	// 	$vdata["personas"] = $this->PersonasModel->findAll();
-
-	// 	$this->load->view('verUsarios', $vdata);
-	// }
-
-	public function openCreateUser(){
-		
-		$data['session'] = $this->session->userdata("session-mvc");
-		$this->load->view('admin/crearUsuario', $data);
-		
-
-        
-
-		// if ($this->input->server("REQUEST_METHOD") == "POST") {
-		// 	$datas["cedula"] = $this->input->post("documento");
-		// 	$datas["nombres"] = $this->input->post("nombre");
-		// 	$datas["apellidos"] = $this->input->post("apellido");
-		// 	$datas["email"] = $this->input->post("correo");
-		// 	$datas["telefono"] = $this->input->post("telefono");
-		// 	$datas["direccion"] = $this->input->post("direccion");
-		// 	$datas["foto"] = $this->input->post("foto");
-
-		// 	$usuarios["cedula"]=$this->input->post("documento");
-		// 	$usuarios["email"]=$this->input->post("correo");
-		// 	$contraseña=$this->input->post("contrasenia");
-		// 	$usuarios["password"]=md5($contraseña);
-		// 	$usuarios["tipo"]=$this->input->post("shirts");
-		// 	$usuarios["estado"]=$this->input->post("estado");
-			
-
-		// 	$this->PersonasModel->insert($datas);
-		// 	$this->PersonasModel->insertUser($usuarios);
-		// }
-
-    
-	}
-
->>>>>>> Stashed changes
 	public function actualizarPersona($cedula){
 		$data['session'] = $this->session->userdata("session-mvc");	
 		$data['cedula'] = $cedula;	
 		$this->load->view('admin/actualizarUsuario', $data);
 	}
-<<<<<<< Updated upstream
-=======
 
->>>>>>> Stashed changes
 
 	
 

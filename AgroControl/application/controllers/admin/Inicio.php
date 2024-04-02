@@ -49,9 +49,36 @@ class Inicio extends CI_Controller {
 		
 	}
 
+	public function actualizarCultivo($id_cultivo){
+		$data['session'] = $this->session->userdata("session-mvc");	
+		$data['id_cultivo'] = $id_cultivo;
+		$this->load->view('admin/actualizarCultivo', $data);
+	}
+
+	public function mostrarCultivos(){
+		$url = 'http://localhost/APIenPHP-agricultura/cultivos/Obtener.php';
+
+        // Realizar la solicitud GET a la API
+        $response = $this->curl->simple_get($url);
+
+        // Procesar los datos recibidos (puede variar dependiendo de la estructura de los datos)
+        $respuesta = json_decode($response, true);
+
+        // Hacer algo con los datos, como pasarlos a la vista
+		$data['datos']=$respuesta;
+		$data['session'] = $this->session->userdata("session-mvc");
+        $this->load->view('admin/verCultivos', $data );
+	}
+
 	public function mostrarperfil(){
 		$data['session'] = $this->session->userdata("session-mvc");
 		$this->load->view('admin/perfil', $data);
+	}
+
+	public function crearCultivo(){
+		
+		$data['session'] = $this->session->userdata("session-mvc");
+		$this->load->view('admin/crearCultivo', $data);
 	}
 
 

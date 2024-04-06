@@ -50,7 +50,13 @@ public class InicioAgricultor extends AppCompatActivity {
 
         traerTotalTareas();
     }
+    public void ver_cultivos(View view){
 
+        Intent intencion = new Intent(getApplicationContext(), CultivosAgricultor.class);
+        startActivity(intencion);
+
+        finish();
+    }
     public void traerTotalTareas(){
         RequestQueue queue = Volley.newRequestQueue(getApplicationContext());
         String url = config.getEndpoint("APIenPHP-agricultura/tareas_agricultor/getAsignar.php");

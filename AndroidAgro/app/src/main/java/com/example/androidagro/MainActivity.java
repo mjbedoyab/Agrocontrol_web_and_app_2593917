@@ -50,6 +50,7 @@ public class MainActivity extends AppCompatActivity {
                 try {
                     System.out.println("El servidor POST responde OK");
                     JSONObject jsonObject = new JSONObject(response);
+
                     JSONArray registrosArray = jsonObject.getJSONArray("registros");
                     JSONObject primerRegistro = registrosArray.getJSONObject(0);
                     String contrasena = primerRegistro.getString("pass");

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="verde">#0e813c</color>
+    <color name="white">#FFFFFFFF</color>
+    <string name="app_name">AndroidAgro</string>
+    <style name="Base.Theme.AndroidAgro" parent="Theme.Material3.DayNight.NoActionBar">
+        
+        
+    </style>
+    <style name="Theme.AndroidAgro" parent="Base.Theme.AndroidAgro"/>
+</resources>

@@ -5,8 +5,8 @@
 
     include 'Conexion.php';
 
-    if (isset($_GET['id_agricultor']) || isset($_GET['id_tarea'])) {
-        $id_agricultor = isset($_GET['id_agricultor']) ? $_GET['id_agricultor'] : null;
+    if (isset($_GET['id_agricultor']) || isset($_GET['id_tarea']) || isset($_POST['id_agricultor'])) {
+        $id_agricultor = isset($_GET['id_agricultor']) ? $_GET['id_agricultor'] : $_POST['id_agricultor'];
         $id_tarea = isset($_GET['id_tarea']) ? $_GET['id_tarea'] : null;
     
         if ($id_agricultor !== null || $id_tarea !== null) {

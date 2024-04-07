@@ -70,7 +70,7 @@ public class AdaptadorCultivos extends RecyclerView.Adapter<AdaptadorCultivos.Vi
             img.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    Intent intent = new Intent(contexto, AsignarTareaCultivo.class);
+                    Intent intent = new Intent(contexto, TablaTareas.class);
                     //Toast.makeText( contexto, datos.getNombre(), Toast.LENGTH_LONG ).show();
                     contexto.startActivity(intent);
                 }

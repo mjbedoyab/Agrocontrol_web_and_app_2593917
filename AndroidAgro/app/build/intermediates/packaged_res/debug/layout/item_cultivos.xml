@@ -22,6 +22,7 @@
                 android:layout_width="125dp"
                 android:layout_height="125dp"
                 android:src="@mipmap/ic_launcher"
+                android:onClick="ver_tarea_cultivo"
             />
             <LinearLayout
                 android:layout_width="match_parent"
@@ -89,19 +90,6 @@
             </LinearLayout>
 
         </LinearLayout>
-
-        <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/btnDetalle"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:clickable="true"
-            app:srcCompat="@drawable/ic_detalle"
-            android:backgroundTint="#00FF00"
-            android:layout_gravity="bottom|right"
-            android:layout_margin="5dp"
-            app:fabCustomSize="40dp"
-            app:tint="#FFFFFF"
-            />
 
     </FrameLayout>
 

@@ -1,7 +1,9 @@
 package com.example.androidagro;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -36,6 +38,14 @@ public class CultivosAgricultor extends AppCompatActivity {
         recycler = findViewById(R.id.recycler_cultivos);
         config = new Config(getApplicationContext());
         traerCultivos();
+    }
+
+    public void ver_tarea_cultivo(View view){
+
+        Intent intencion = new Intent(getApplicationContext(), TablaTareas.class);
+        startActivity(intencion);
+
+        finish();
     }
 
     public void traerCultivos() {

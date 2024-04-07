@@ -37,6 +37,9 @@
             android:name="com.example.androidagro.CultivosAgricultor"
             android:exported="false" />
         <activity
+            android:name="com.example.androidagro.TablaTareas"
+            android:exported="false" />
+        <activity
             android:name="com.example.androidagro.MainActivity"
             android:exported="true" >
             <intent-filter>

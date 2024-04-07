@@ -22,6 +22,7 @@
                 android:layout_width="125dp"
                 android:layout_height="125dp"
                 android:src="@mipmap/ic_launcher"
+                android:onClick="ver_tarea_cultivo"
             />
             <LinearLayout
                 android:layout_width="match_parent"

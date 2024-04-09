@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 02-04-2024 a las 17:21:12
--- Versión del servidor: 10.4.27-MariaDB
--- Versión de PHP: 8.2.0
+-- Tiempo de generación: 09-04-2024 a las 07:46:15
+-- Versión del servidor: 10.4.28-MariaDB
+-- Versión de PHP: 8.2.4
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -32,17 +32,16 @@ CREATE TABLE `admin` (
   `nombre` varchar(20) DEFAULT NULL,
   `email` varchar(20) DEFAULT NULL,
   `pass` varchar(20) DEFAULT NULL,
-  `estado` enum('ACTIVO','INACTIVO','','') NOT NULL,
-  `foto` varchar(255) NOT NULL
+  `estado` enum('ACTIVO','INACTIVO','','') NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `admin`
 --
 
-INSERT INTO `admin` (`cedula`, `nombre`, `email`, `pass`, `estado`, `foto`) VALUES
-('1224', 'camilo', 'sasa@sasa', '1234', 'ACTIVO', ''),
-('7878', 'carlos', 'mejia@jsas', '123', 'ACTIVO', '');
+INSERT INTO `admin` (`cedula`, `nombre`, `email`, `pass`, `estado`) VALUES
+('1224', 'camilo', 'sasa@sasa', '1234', 'ACTIVO'),
+('7878', 'carlos', 'mejia@jsas', '123', 'ACTIVO');
 
 -- --------------------------------------------------------
 
@@ -57,19 +56,18 @@ CREATE TABLE `agricultores` (
   `email` varchar(20) DEFAULT NULL,
   `pass` varchar(20) DEFAULT NULL,
   `telefono` varchar(20) DEFAULT NULL,
-  `estado` enum('ACTIVO','INACTIVO') DEFAULT NULL,
-  `img` varchar(100) DEFAULT NULL
+  `estado` enum('ACTIVO','INACTIVO') DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `agricultores`
 --
 
-INSERT INTO `agricultores` (`cedula`, `nombre`, `apellido`, `email`, `pass`, `telefono`, `estado`, `img`) VALUES
-('098', 'kilo', 'y medio', 'dasda@sdasa', '222', '12', 'ACTIVO', 'default.png'),
-('10009', 'sebas', 'yoyoou', 'gfjvj.q@j,vj,', '9999', '999', 'ACTIVO', 'default.png'),
-('23232', 'Jose', 'Angarita', 'angarita@gmail.com', '123', '3232', 'ACTIVO', 'default.png'),
-('3443', 'ramiro', 'peche', 'kila@wasa', '23', '121', 'ACTIVO', 'default.png');
+INSERT INTO `agricultores` (`cedula`, `nombre`, `apellido`, `email`, `pass`, `telefono`, `estado`) VALUES
+('098', 'kilo', 'y medio', 'dasda@sdasa', '222', '12', 'ACTIVO'),
+('10009', 'sebas', 'yoyoou', 'gfjvj.q@j,vj,', '9999', '999', 'ACTIVO'),
+('23232', 'Jose', 'Angarita', 'angarita@gmail.com', '123', '3232', 'ACTIVO'),
+('3443', 'ramiro', 'peche', 'kila@wasa', '23', '121', 'ACTIVO');
 
 -- --------------------------------------------------------
 
@@ -87,7 +85,8 @@ CREATE TABLE `agricultor_cultivo` (
 --
 
 INSERT INTO `agricultor_cultivo` (`id_cultivo`, `id_agricultor`) VALUES
-(101, '098');
+(102, '098'),
+(103, '098');
 
 -- --------------------------------------------------------
 
@@ -100,7 +99,7 @@ CREATE TABLE `cultivos` (
   `nombre` varchar(20) DEFAULT NULL,
   `descripcion` varchar(20) DEFAULT NULL,
   `tipo` enum('VERDURAS','FRUTAS','GRANOS') DEFAULT NULL,
-  `img` varchar(100) DEFAULT NULL
+  `img` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -108,15 +107,14 @@ CREATE TABLE `cultivos` (
 --
 
 INSERT INTO `cultivos` (`id_cultivo`, `nombre`, `descripcion`, `tipo`, `img`) VALUES
-(100, 'papa', 'asasasjkjjjj', 'VERDURAS', NULL),
-(101, 'yuca', 'pa sembra', 'VERDURAS', NULL),
-(102, 'fresas', 'muy buena ', 'FRUTAS', NULL),
-(103, 'PERAS', 'MUY DULCE', 'FRUTAS', NULL),
-(104, 'arroz', 'arrozito', 'GRANOS', NULL),
-(105, 'zanahoria', 'no me gusta', 'VERDURAS', NULL),
-(106, 'zanahoria', 'no me gusta', 'VERDURAS', NULL),
-(107, 'zanahoria', 'no me gusta', 'VERDURAS', NULL),
-(108, 'htrth', 'rthryh', 'VERDURAS', NULL);
+(100, 'papa', 'asasas', 'VERDURAS', ''),
+(101, 'yuca', 'pa sembra', 'VERDURAS', ''),
+(102, 'fresas', 'muy buena ', 'FRUTAS', ''),
+(103, 'PERAS', 'MUY DULCE', 'FRUTAS', ''),
+(104, 'arroz', 'arrozito', 'GRANOS', ''),
+(105, 'zanahoria', 'no me gusta', 'VERDURAS', ''),
+(106, 'zanahoria', 'no me gusta', 'VERDURAS', ''),
+(107, 'zanahoria', 'no me gusta', 'VERDURAS', '');
 
 -- --------------------------------------------------------
 
@@ -139,7 +137,7 @@ CREATE TABLE `tareas` (
 INSERT INTO `tareas` (`id_tarea`, `id_cultivo`, `titulo`, `descripcion`, `estado`) VALUES
 (2, 101, 'Pelar pap', 'todos los lida', 'Finalizado'),
 (3, 100, 'pelar yuc', 'en la de pa', 'Pendiente'),
-(4, 103, 'COSECHAR', 'PARA EL DIA 20 DE JU', 'Pendiente'),
+(4, 103, 'COSECHAR', 'PARA EL DIA 20 DE JU', 'Finalizado'),
 (5, 100, 'recoger el', 'todos los dias', 'Pendiente'),
 (6, 100, 'lavar p', 'ho', 'Finalizado'),
 (7, 104, 'lavar el a', 'lavarlo cada 5 dias', 'Finalizado'),
@@ -157,7 +155,8 @@ INSERT INTO `tareas` (`id_tarea`, `id_cultivo`, `titulo`, `descripcion`, `estado
 (19, 100, 'cosechar zanahoria', 'wfre', 'Pendiente'),
 (20, 100, 'cosechar zanahoria', 'zdzbsrg', 'Pendiente'),
 (21, 100, 'cosechar ', 'egtt', 'Pendiente'),
-(22, 105, 'arepa', 'con mantequilla', 'Pendiente');
+(22, 102, 'cultivar fresa', 'esbuena', 'Finalizado'),
+(23, 102, 'exportar', 'rapido', 'Finalizado');
 
 -- --------------------------------------------------------
 
@@ -178,9 +177,13 @@ CREATE TABLE `tarea_agricultor` (
 --
 
 INSERT INTO `tarea_agricultor` (`id_agricultor`, `id_tarea`, `fecha_inicio`, `fecha_fin`, `evidencia`) VALUES
-('098', 2, '2024-04-01', '2024-04-15', ''),
 ('098 ', 3, '2023-11-10', '0000-00-00', ''),
+('098', 4, '2024-04-11', '2024-04-25', ''),
 ('098 ', 6, '2023-11-10', '0000-00-00', ''),
+('098', 10, '2024-04-23', '2024-04-24', ''),
+('098', 21, '2024-04-09', '2024-04-16', ''),
+('098', 22, '2024-04-17', '2024-04-26', ''),
+('098', 23, '2024-04-02', '2024-04-09', ''),
 ('23232 ', 3, '2023-11-10', '2023-11-30', ''),
 ('23232 ', 4, '2023-11-10', '2023-11-20', ''),
 ('23232 ', 5, '2023-11-10', '2023-11-24', ''),
@@ -241,13 +244,13 @@ ALTER TABLE `tarea_agricultor`
 -- AUTO_INCREMENT de la tabla `cultivos`
 --
 ALTER TABLE `cultivos`
-  MODIFY `id_cultivo` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=109;
+  MODIFY `id_cultivo` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=108;
 
 --
 -- AUTO_INCREMENT de la tabla `tareas`
 --
 ALTER TABLE `tareas`
-  MODIFY `id_tarea` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `id_tarea` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- Restricciones para tablas volcadas

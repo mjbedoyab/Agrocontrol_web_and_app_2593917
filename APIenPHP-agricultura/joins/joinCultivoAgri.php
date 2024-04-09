@@ -5,19 +5,22 @@
 
     include 'Conexion.php';
 
-    if (isset($_GET['id_agricultor']) || isset($_GET['id_tarea']) || isset($_POST['id_agricultor'])) {
-        $id_agricultor = isset($_GET['id_agricultor']) ? $_GET['id_agricultor'] : $_POST['id_agricultor'];
-        $id_tarea = isset($_GET['id_tarea']) ? $_GET['id_tarea'] : null;
+    if (isset($_GET['id_agricultor'])  || isset($_POST['id_agricultor']) ) {
+       // $id_cultivo = isset($_GET['id_cultivo']) ? $_GET['id_cultivo'] : null;
+        $id_agricultor = isset($_POST['id_agricultor']) ? $_POST['id_agricultor'] : $_GET['id_agricultor'];
+
+       
     
-        if ($id_agricultor !== null || $id_tarea !== null) {
-            $consulta = $base_de_datos->query("SELECT * FROM tarea_agricultor WHERE id_agricultor = '$id_agricultor' OR id_tarea = '$id_tarea'");
+        if ($id_agricultor !== null) {
+            $consulta = $base_de_datos->query("SELECT cultivos.*, agricultor_cultivo.id_agricultor FROM cultivos JOIN agricultor_cultivo ON cultivos.id_cultivo= agricultor_cultivo.id_cultivo
+            WHERE agricultor_cultivo.id_agricultor =  $id_agricultor ");
             $datos = $consulta->fetchAll();
             $respuesta['registros'] = $datos;
             echo json_encode($respuesta);
         } else {
             $respuesta = [
                 'status' => false,
-                'mesagge' => "ERROR##DATOS##GET",
+                'mesagge' => "ERROR##DATOS##GET-datos",
                 '$_GET' => $_GET,
                 '$_POST' => $_POST
             ];
@@ -35,4 +38,3 @@
     
     
 ?>
-

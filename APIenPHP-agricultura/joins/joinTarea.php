@@ -5,9 +5,9 @@
 
     include 'Conexion.php';
 
-    if (isset($_GET['id_agricultor']) && isset($_GET['id_cultivo'])) {
-        $id_agricultor = isset($_GET['id_agricultor']) ? $_GET['id_agricultor'] : null;
-        $id_cultivo = isset($_GET['id_cultivo']) ? $_GET['id_cultivo'] : null;
+    if (isset($_GET['id_agricultor']) && isset($_GET['id_cultivo']) || isset($_POST['id_agricultor']) && isset($_POST['id_cultivo'])) {
+        $id_agricultor = isset($_GET['id_agricultor']) ? $_GET['id_agricultor'] : $_POST['id_agricultor'];
+        $id_cultivo = isset($_GET['id_cultivo']) ? $_GET['id_cultivo'] : $_POST['id_cultivo'];
     
         if ($id_agricultor !== null && $id_cultivo !== null) {
             $consulta = $base_de_datos->query("SELECT tareas.id_tarea, tareas.id_cultivo, tareas.titulo, tareas.descripcion , tarea_agricultor.fecha_fin , tareas.estado  FROM tareas

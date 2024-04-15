@@ -112,4 +112,15 @@ public class CultivosAgricultor extends AppCompatActivity {
         };
         queue.add(solicitud);
     }
+    public void cerrarSesion(View vista){
+        SharedPreferences sharedPreferences = getSharedPreferences("agroControl", MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.clear();
+        editor.apply();
+
+        Intent intent = new Intent(this, MainActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK); // Limpiar el historial de actividades
+        startActivity(intent);
+        finish();
+    }
 }
